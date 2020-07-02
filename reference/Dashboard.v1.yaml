@@ -110,7 +110,13 @@ paths:
                     - created_at
                     - hotel_id
       operationId: get-locked-rooms
-      parameters: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
     post:
       summary: Criar novo quarto bloqueado
       operationId: post-locked-rooms
@@ -136,6 +142,13 @@ paths:
                   type: string
               required:
                 - room
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
   '/locked/rooms/{id}':
     parameters:
       - schema:
@@ -159,6 +172,13 @@ paths:
                 required:
                   - room
       operationId: get-locked-rooms-id
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
     put:
       summary: Atualizar quarto bloqueado
       operationId: put-locked-rooms-id
@@ -187,11 +207,25 @@ paths:
                   type: string
               required:
                 - room
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
     delete:
       summary: Deletar quarto bloqueado
       operationId: delete-locked-rooms-id
       responses:
         '200':
           description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
 components:
   schemas: {}
