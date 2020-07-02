@@ -81,5 +81,117 @@ paths:
               required:
                 - email
                 - password
+  /locked/rooms:
+    get:
+      summary: Todos quartos bloqueados
+      tags: []
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    room:
+                      type: string
+                    created_at:
+                      type: string
+                    hotel_id:
+                      type: integer
+                  required:
+                    - id
+                    - room
+                    - created_at
+                    - hotel_id
+      operationId: get-locked-rooms
+      parameters: []
+    post:
+      summary: Criar novo quarto bloqueado
+      operationId: post-locked-rooms
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  id:
+                    type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                room:
+                  type: string
+              required:
+                - room
+  '/locked/rooms/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  room:
+                    type: string
+                required:
+                  - room
+      operationId: get-locked-rooms-id
+    put:
+      summary: ''
+      operationId: put-locked-rooms-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  room:
+                    type: string
+                  created_at:
+                    type: string
+                required:
+                  - room
+                  - created_at
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                room:
+                  type: string
+              required:
+                - room
+    delete:
+      summary: ''
+      operationId: delete-locked-rooms-id
+      responses:
+        '200':
+          description: OK
 components:
   schemas: {}
