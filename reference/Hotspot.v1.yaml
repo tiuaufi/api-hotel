@@ -1,0 +1,436 @@
+openapi: 3.0.0
+info:
+  title: Hotspot
+  version: '1.0'
+  license:
+    name: MIT
+  contact:
+    name: Uau-Fi
+    email: ti@uaufi.com
+    url: 'mailto:ti@uaufi.com'
+  description: ''
+servers:
+  - description: Sandbox
+    url: 'https://maxhotspot.uaufi.com'
+paths:
+  '/clients/{mac}/hotspot/{spot}/ip/{ip}':
+    get:
+      summary: Informações sobre cliente e hotspot
+      tags: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hotspot:
+                    type: object
+                    properties:
+                      bg_color:
+                        type: string
+                      detail_color:
+                        type: string
+                      allow_resident:
+                        type: boolean
+                      ask_phone:
+                        type: boolean
+                      redirect_url:
+                        type: string
+                      color_logo:
+                        type:
+                          - string
+                          - 'null'
+                      white_logo:
+                        type:
+                          - string
+                          - 'null'
+                  plan:
+                    type:
+                      - object
+                      - 'null'
+                    properties:
+                      name:
+                        type: string
+                      duration:
+                        type: integer
+                      unit_time:
+                        type: string
+                      id:
+                        type: integer
+                  client:
+                    type:
+                      - object
+                      - 'null'
+                    properties:
+                      name:
+                        type: string
+                      foreign:
+                        type: integer
+                      document:
+                        type: string
+                      last_room:
+                        type: integer
+                  advertisement:
+                    type:
+                      - object
+                      - 'null'
+                  socials:
+                    type: object
+                    properties:
+                      facebook:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          secret:
+                            type: string
+                      linkedin:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          secret:
+                            type: string
+      operationId: get-clients-hotspot-ip
+      description: ''
+    parameters:
+      - schema:
+          type: string
+        name: mac
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: spot
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: ip
+        in: path
+        required: true
+  '/socials/facebook/{code}':
+    get:
+      summary: Receber informações do Facebook do cliente
+      tags: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  client:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      photo:
+                        type: string
+                      email:
+                        type: string
+      operationId: 'get-socials-facebook-:code'
+    parameters:
+      - schema:
+          type: string
+        name: code
+        in: path
+        required: true
+  '/socials/linkedin/{code}':
+    get:
+      summary: Receber informações do Linkedin do cliente
+      tags: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  client:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+      operationId: 'get-socials-linkedin-:code'
+    parameters:
+      - schema:
+          type: string
+        name: code
+        in: path
+        required: true
+  /clients:
+    post:
+      summary: Criar o cliente
+      operationId: post-clients
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  plan:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      duration:
+                        type: integer
+                      unit_time:
+                        type: string
+                      id:
+                        type: integer
+              examples: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                device:
+                  type: object
+                  required:
+                    - mac
+                    - info
+                  properties:
+                    mac:
+                      type: string
+                    info:
+                      type: string
+                area_code:
+                  type:
+                    - integer
+                    - 'null'
+                spot:
+                  type: integer
+                possibleGuest:
+                  type: integer
+                client:
+                  type: object
+                  required:
+                    - name
+                    - foreign
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    document:
+                      type: string
+                    last_room:
+                      type: integer
+                    foreign:
+                      type: integer
+                    phone:
+                      type:
+                        - string
+                        - 'null'
+              required:
+                - device
+                - spot
+                - possibleGuest
+                - client
+            examples: {}
+      description: ''
+    put:
+      summary: Atualizar cliente
+      operationId: put-clients
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  plan:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      duration:
+                        type: integer
+                      unit_time:
+                        type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    last_room:
+                      type: string
+                spot:
+                  type: integer
+                possibleGuest:
+                  type: integer
+  /area/codes:
+    get:
+      summary: Todos DDIs
+      tags: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  codes:
+                    type: array
+                    items:
+                      type: integer
+      operationId: get-area-codes
+  '/events/voucher/{voucher}':
+    parameters:
+      - schema:
+          type: string
+        name: voucher
+        in: path
+        required: true
+    get:
+      summary: Validar o voucher de evento
+      tags: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  plan:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      duration:
+                        type: integer
+                      unit_time:
+                        type: string
+      operationId: get-events-voucher-voucher
+  '/plans/types/{q}':
+    parameters:
+      - schema:
+          type: string
+        name: q
+        in: path
+        required: true
+    get:
+      summary: Capturar plano pelo tipo
+      tags: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  plan:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      duration:
+                        type: string
+                      unit_time:
+                        type: integer
+      operationId: get-plans-types-q
+  /connected/clients:
+    parameters: []
+    post:
+      summary: Conectar cliente
+      operationId: post-connected-clients
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  device_id:
+                    type: integer
+                  hotspot_id:
+                    type: integer
+                  plan_id:
+                    type: integer
+                  online_until:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  id:
+                    type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                plan:
+                  type: object
+                  required:
+                    - id
+                    - name
+                    - duration
+                    - unit_time
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    duration:
+                      type: integer
+                    unit_time:
+                      type: string
+                mac:
+                  type: string
+                ip:
+                  type: string
+                hotspot:
+                  type: object
+                  required:
+                    - id
+                    - external_id
+                  properties:
+                    id:
+                      type: integer
+                    external_id:
+                      type: integer
+                    bg_color:
+                      type: string
+                    detail_color:
+                      type: string
+                    ask_phone:
+                      type: string
+                    allow_resident:
+                      type: string
+                    redirect_url:
+                      type: string
+              required:
+                - plan
+                - mac
+                - ip
+                - hotspot
+components:
+  schemas: {}
