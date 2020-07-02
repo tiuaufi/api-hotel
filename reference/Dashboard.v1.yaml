@@ -55,10 +55,6 @@ paths:
                                 type: string
                               action:
                                 type: string
-                            required:
-                              - title
-                              - redirect
-                              - action
                       required:
                         - title
                         - redirect
