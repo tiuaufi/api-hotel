@@ -33,7 +33,7 @@ paths:
                     type: string
                   token:
                     type: string
-                  permissions:
+                  menu:
                     type: array
                     items:
                       type: object
@@ -66,7 +66,7 @@ paths:
                   - image
                   - group
                   - token
-                  - permissions
+                  - menu
       description: ''
       requestBody:
         content:
