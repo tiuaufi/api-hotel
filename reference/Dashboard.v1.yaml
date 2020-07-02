@@ -2,13 +2,18 @@ openapi: 3.0.0
 info:
   title: Dashboard
   version: '1.0'
+  license:
+    name: MIT
+  contact:
+    name: Uau-Fi TI
+    email: ti@uaufi.com
 servers:
   - url: 'https://maxhotspot.uaufi.com'
     description: Sandbox
 paths:
   /sessions:
     post:
-      summary: ''
+      summary: Autenticar conta
       operationId: post-sessions
       responses:
         '200':
