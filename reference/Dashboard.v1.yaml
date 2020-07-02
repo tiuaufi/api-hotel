@@ -144,7 +144,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Ver quarto bloqueado
       tags: []
       responses:
         '200':
@@ -160,7 +160,7 @@ paths:
                   - room
       operationId: get-locked-rooms-id
     put:
-      summary: ''
+      summary: Atualizar quarto bloqueado
       operationId: put-locked-rooms-id
       responses:
         '200':
@@ -188,7 +188,7 @@ paths:
               required:
                 - room
     delete:
-      summary: ''
+      summary: Deletar quarto bloqueado
       operationId: delete-locked-rooms-id
       responses:
         '200':
