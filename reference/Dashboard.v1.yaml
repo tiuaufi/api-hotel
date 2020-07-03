@@ -386,5 +386,217 @@ paths:
           name: Authentication
           description: Bearer token
           required: true
+  /atlantica/hotels:
+    get:
+      summary: Todos atlantica hoteis
+      tags: []
+      responses:
+        '200':
+          description: OK
+      operationId: get-atlantica-hotels
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    post:
+      summary: Criar atlantica hotel
+      operationId: post-atlantica-hotels
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                external_id:
+                  type: integer
+              required:
+                - name
+                - external_id
+  '/atlantica/hotels/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Ver atlantica hotel
+      tags: []
+      responses:
+        '200':
+          description: OK
+      operationId: get-atlantica-hotels-id
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    put:
+      summary: Atualizar atlantica hotel
+      operationId: put-atlantica-hotels-id
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                external_id:
+                  type: integer
+    delete:
+      summary: Deletar atlantica hotel
+      operationId: delete-atlantica-hotels-id
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+  /users:
+    get:
+      summary: Todos usuarios
+      tags: []
+      responses:
+        '200':
+          description: OK
+      operationId: get-users
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    post:
+      summary: Criar usuário
+      operationId: post-users
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                group_id:
+                  type: integer
+                hotel_id:
+                  type: integer
+                password:
+                  type: string
+              required:
+                - name
+                - email
+                - group_id
+                - hotel_id
+                - password
+  '/users/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Ver usuário
+      tags: []
+      responses:
+        '200':
+          description: OK
+      operationId: get-users-id
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    put:
+      summary: Atualizar usuario
+      operationId: put-users-id
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                group_id:
+                  type: integer
+                hotel_id:
+                  type: integer
+                password:
+                  type: string
+    delete:
+      summary: Deletar usuario
+      operationId: delete-users-id
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
 components:
   schemas: {}
