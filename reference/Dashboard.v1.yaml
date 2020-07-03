@@ -356,6 +356,13 @@ paths:
       responses:
         '200':
           description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          description: Bearer token
+          required: true
+          name: Authetication
     patch:
       summary: Trocar imagem do hotel
       operationId: patch-hotels-id
@@ -372,5 +379,12 @@ paths:
                   type: object
               required:
                 - file
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
 components:
   schemas: {}
