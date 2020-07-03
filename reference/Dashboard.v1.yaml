@@ -598,5 +598,183 @@ paths:
           name: Authentication
           description: Bearer token
           required: true
+  /hotspots:
+    get:
+      summary: Todos hotspots
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    bg_color:
+                      type: string
+                    detail_color:
+                      type: string
+                    ask_phone:
+                      type: string
+                    redirect_url:
+                      type: string
+                    external_id:
+                      type: integer
+                  required:
+                    - bg_color
+                    - detail_color
+                    - ask_phone
+                    - redirect_url
+                    - external_id
+      operationId: get-hotspots
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    post:
+      summary: Criar hotspot
+      operationId: post-hotspots
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          required: true
+          description: Bearer token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bg_color:
+                  type: string
+                deatil_color:
+                  type: string
+                external_id:
+                  type: integer
+                redirect_url:
+                  type: string
+                ask_phone:
+                  type: boolean
+  '/hotspots/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Ver hotspot
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  external_id:
+                    type: integer
+                  bg_color:
+                    type: string
+                  detail_color:
+                    type: string
+                  redirect_url:
+                    type: string
+                  color_logo:
+                    type: string
+                  ask_phone:
+                    type: boolean
+                  '':
+                    type: string
+                required:
+                  - external_id
+                  - bg_color
+                  - detail_color
+                  - redirect_url
+                  - ask_phone
+      operationId: get-hotspots-id
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          required: true
+          description: Bearer token
+    put:
+      summary: Atualizar hotspot
+      operationId: put-hotspots-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bg_color:
+                  type: string
+                detail_color:
+                  type: string
+                ask_phone:
+                  type: boolean
+                redirect_url:
+                  type: string
+                external_id:
+                  type: integer
+    delete:
+      summary: Deletar hotspot
+      operationId: delete-hotspots-id
+      responses:
+        '200':
+          description: OK
+  '/hotspots/{hotspot_id}/file/type/{hotspot_file_type_id}':
+    parameters:
+      - schema:
+          type: string
+        name: hotspot_id
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: hotspot_file_type_id
+        in: path
+        required: true
+    patch:
+      summary: Trocar imagem do hotspot
+      operationId: patch-hotspots-hotspot_id-file-type-hotspot_file_type_id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: object
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+      description: |-
+        hotspot_file_type_id: 1 (imagem colorido)
+        hotspot_file_type_id: 2 (imagem branca)
+        hotspot_file_type_id > 2 (não existe)
 components:
   schemas: {}
