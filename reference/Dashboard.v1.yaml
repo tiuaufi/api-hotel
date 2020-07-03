@@ -699,8 +699,8 @@ paths:
                     type: string
                   ask_phone:
                     type: boolean
-                  '':
-                    type: string
+                  hotel_id:
+                    type: integer
                 required:
                   - external_id
                   - bg_color
@@ -737,6 +737,9 @@ paths:
                   type: string
                 external_id:
                   type: integer
+                hotel_id:
+                  type: integer
+        description: ''
     delete:
       summary: Deletar hotspot
       operationId: delete-hotspots-id
