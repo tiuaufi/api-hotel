@@ -622,6 +622,8 @@ paths:
                       type: string
                     external_id:
                       type: integer
+                    hotel_id:
+                      type: integer
                   required:
                     - bg_color
                     - detail_color
@@ -657,7 +659,7 @@ paths:
               properties:
                 bg_color:
                   type: string
-                deatil_color:
+                detail_color:
                   type: string
                 external_id:
                   type: integer
@@ -665,6 +667,8 @@ paths:
                   type: string
                 ask_phone:
                   type: boolean
+                hotel_id:
+                  type: integer
   '/hotspots/{id}':
     parameters:
       - schema:
