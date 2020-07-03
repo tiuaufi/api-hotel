@@ -118,7 +118,7 @@ paths:
           description: Bearer token
           required: true
     post:
-      summary: Criar novo quarto bloqueado
+      summary: Criar quarto bloqueado
       operationId: post-locked-rooms
       responses:
         '200':
@@ -227,5 +227,150 @@ paths:
           name: Authentication
           description: Bearer token
           required: true
+  /hotels:
+    get:
+      summary: Todos hotéis
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    color:
+                      type: string
+                    atlantica_hotel_id:
+                      type: integer
+      operationId: get-hotels
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          required: true
+          description: Bearer token
+    post:
+      summary: Criar hotel
+      operationId: post-hotels
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                color:
+                  type: string
+                atlantica_hotel_id:
+                  type: integer
+              required:
+                - name
+                - color
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+  '/hotels/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Ver hotel
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  color:
+                    type: string
+                  atlantica_hotel_id:
+                    type: integer
+                  image:
+                    type: string
+                required:
+                  - id
+                  - name
+                  - color
+      operationId: get-hotels-id
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          required: true
+          description: Bearer token
+    put:
+      summary: Atualizar hotel
+      operationId: put-hotels-id
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                color:
+                  type: string
+                atlantica_hotel_id:
+                  type: integer
+    delete:
+      summary: Deletar hotel
+      operationId: delete-hotels-id
+      responses:
+        '200':
+          description: OK
+    patch:
+      summary: Trocar imagem do hotel
+      operationId: patch-hotels-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: object
+              required:
+                - file
 components:
   schemas: {}
