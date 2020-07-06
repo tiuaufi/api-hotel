@@ -1067,5 +1067,175 @@ paths:
           name: Authentication
           description: Bearer token
           required: true
+  /plans:
+    get:
+      summary: Todos os planos
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    type:
+                      type: string
+                    id:
+                      type: integer
+                    hotspot:
+                      type: integer
+                    hotel:
+                      type: string
+      operationId: get-plans
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    post:
+      summary: Criar plano
+      operationId: post-plans
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                hotspot_id:
+                  type: integer
+                speed_download:
+                  type: integer
+                speed_upload:
+                  type: integer
+                duration:
+                  type: integer
+                unit_time:
+                  type: string
+                plan_type_id:
+                  type: integer
+                active:
+                  type: boolean
+              required:
+                - name
+                - hotspot_id
+                - speed_download
+                - speed_upload
+                - duration
+                - unit_time
+                - plan_type_id
+                - active
+  '/plans/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Ver plano
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  hotspot_id:
+                    type: integer
+                  speed_download:
+                    type: integer
+                  speed_upload:
+                    type: integer
+                  duration:
+                    type: integer
+                  unit_time:
+                    type: string
+                  plan_type_id:
+                    type: integer
+                  active:
+                    type: boolean
+      operationId: get-plans-id
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    put:
+      summary: ''
+      operationId: put-plans-id
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                speed_download:
+                  type: integer
+                speed_upload:
+                  type: integer
+                duration:
+                  type: integer
+                unit_time:
+                  type: string
+                plan_type_id:
+                  type: integer
+                active:
+                  type: boolean
+                hotspot_id:
+                  type: integer
+    delete:
+      summary: ''
+      operationId: delete-plans-id
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
 components:
   schemas: {}
