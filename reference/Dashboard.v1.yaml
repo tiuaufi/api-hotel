@@ -1047,5 +1047,25 @@ paths:
           name: Authentication
           description: Bearer token
           required: true
+  /events/plans:
+    get:
+      summary: Todos planos de evento
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-events-plans
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
 components:
   schemas: {}
