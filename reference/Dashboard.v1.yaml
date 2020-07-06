@@ -989,5 +989,56 @@ paths:
                     key:
                       type: integer
       operationId: get-groups
+  /connected/clients:
+    get:
+      summary: Todos clientes conectados
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    foreign:
+                      type: boolean
+                    mac:
+                      type: string
+                    plan:
+                      type: string
+                    online_until:
+                      type: string
+                    hotel:
+                      type: string
+                    online:
+                      type: boolean
+      operationId: get-connected-clients
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+  '/connected/clients/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    delete:
+      summary: ''
+      operationId: delete-connected-clients-id
+      responses:
+        '200':
+          description: OK
 components:
   schemas: {}
