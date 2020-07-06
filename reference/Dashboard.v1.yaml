@@ -492,6 +492,26 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    hotel:
+                      type: string
+                    group:
+                      type: string
+                  required:
+                    - name
+                    - email
+                    - hotel
+                    - group
       operationId: get-users
       parameters:
         - schema:
@@ -548,6 +568,19 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  hotel_id:
+                    type: integer
+                  group_id:
+                    type: integer
       operationId: get-users-id
       parameters:
         - schema:
@@ -783,5 +816,178 @@ paths:
         hotspot_file_type_id: 1 (imagem colorido)
         hotspot_file_type_id: 2 (imagem branca)
         hotspot_file_type_id > 2 (não existe)
+  /events:
+    parameters: []
+    get:
+      summary: Todos eventos
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    voucher:
+                      type: string
+                    active:
+                      type: string
+                    starts_at:
+                      type: string
+                    end_at:
+                      type: string
+      operationId: get-events-id
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    post:
+      summary: Criar evento
+      operationId: post-events
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          required: true
+          description: Bearer token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: DATE
+                start_date:
+                  type: string
+                  description: |
+                    HH:MM:SS
+                start_time:
+                  type: string
+                  description: DATE
+                end_date:
+                  type: string
+                  description: 'HH:MM:SS'
+                end_time:
+                  type: string
+                active:
+                  type: boolean
+                plan_id:
+                  type: integer
+              required:
+                - name
+                - start_date
+                - start_time
+                - end_date
+                - end_time
+  '/events/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Ver evento
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  voucher:
+                    type: string
+                  start_date:
+                    type: string
+                  start_time:
+                    type: string
+                  end_date:
+                    type: string
+                  end_time:
+                    type: string
+                  active:
+                    type: boolean
+      operationId: get-events-id
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    put:
+      summary: ''
+      operationId: put-events-id
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                start_date:
+                  type: string
+                start_time:
+                  type: string
+                end_date:
+                  type: string
+                end_time:
+                  type: string
+                plan_id:
+                  type: integer
+                active:
+                  type: boolean
+  /groups:
+    get:
+      summary: Todos grupos
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    id:
+                      type: integer
+                    key:
+                      type: integer
+      operationId: get-groups
 components:
   schemas: {}
