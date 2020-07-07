@@ -1225,7 +1225,7 @@ paths:
                 hotspot_id:
                   type: integer
     delete:
-      summary: ''
+      summary: Deletar plano
       operationId: delete-plans-id
       responses:
         '200':
