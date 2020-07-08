@@ -1269,5 +1269,110 @@ paths:
           name: Authentication
           description: Bearer token
           required: true
+  /manage/devices:
+    get:
+      summary: Todos MACs
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    mac:
+                      type: string
+                    name:
+                      type: string
+                    phone:
+                      type: string
+                    comment:
+                      type: string
+                    hotspot:
+                      type: integer
+                    hotel:
+                      type: string
+                  required:
+                    - id
+                    - mac
+                    - name
+                    - phone
+                    - comment
+                    - hotspot
+                    - hotel
+      operationId: get-manage-devices
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    post:
+      summary: Criar MAC
+      operationId: post-manage-devices
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                phone:
+                  type: string
+                comment:
+                  type: string
+                mac:
+                  type: string
+                hotspot_id:
+                  type: integer
+                active:
+                  type: boolean
+              required:
+                - name
+                - phone
+                - comment
+                - mac
+                - hotspot_id
+                - active
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+  '/manage/devices/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    delete:
+      summary: Remover MACs
+      operationId: delete-manage-devices-id
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
 components:
   schemas: {}
