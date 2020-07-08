@@ -1362,7 +1362,7 @@ paths:
         in: path
         required: true
     delete:
-      summary: Remover MACs
+      summary: Deletar MACs
       operationId: delete-manage-devices-id
       responses:
         '200':
