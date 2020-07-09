@@ -1492,5 +1492,96 @@ paths:
           name: Authentication
           description: Bearer token
           required: true
+  /dashboard/infos:
+    get:
+      summary: Dashboard - Cards
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  registers:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      today:
+                        type: integer
+                  hotels:
+                    type: integer
+                  onlines:
+                    type: integer
+      operationId: get-dashboard-infos
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+  /dashboard/charts:
+    get:
+      summary: Dashboard - Charts
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  days:
+                    type: string
+                  months:
+                    type: string
+                  years:
+                    type: string
+      operationId: get-dashboard-charts
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+  /dashboard/connections:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    foreign:
+                      type: boolean
+                    mac:
+                      type: string
+                    plan:
+                      type: string
+                    online_until:
+                      type: string
+      operationId: get-dashboard-connections
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
 components:
   schemas: {}
