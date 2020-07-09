@@ -1401,36 +1401,6 @@ paths:
           name: Authentication
           description: Bearer token
           required: true
-    delete:
-      summary: Deletar impersonamento
-      operationId: delete-users-impersonate
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  email:
-                    type: string
-                  hotel_id:
-                    type: integer
-                  group_id:
-                    type: integer
-                  token:
-                    type: string
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: Authentication
-          description: Bearer token
-          required: true
   '/users/{id}/impersonate':
     parameters:
       - schema:
@@ -1458,6 +1428,63 @@ paths:
                   token:
                     type: string
       operationId: get-users-id-impersonate
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    delete:
+      summary: Desimpersonar usuário
+      operationId: delete-users-id-impersonate
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  color:
+                    type: string
+                  menu:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        redirect:
+                          type: string
+                        action:
+                          type: string
+                        items:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              title:
+                                type: string
+                              redirect:
+                                type: string
+                              action:
+                                type: string
+                  token:
+                    type: string
+                  type:
+                    type: integer
+                  image:
+                    type: string
+                required:
+                  - id
+                  - color
+                  - menu
+                  - token
+                  - type
+                  - image
       parameters:
         - schema:
             type: string
