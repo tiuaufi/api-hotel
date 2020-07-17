@@ -1354,6 +1354,29 @@ paths:
           name: Authentication
           description: Bearer token
           required: true
+    patch:
+      summary: Criar diversos MACs
+      operationId: patch-manage-devices
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                macs:
+                  type: string
+                hotspot_id:
+                  type: integer
+      parameters:
+        - schema:
+            type: string
+          in: header
+          description: Bearer token
+          required: true
+          name: Authentication
   '/manage/devices/{id}':
     parameters:
       - schema:
@@ -1551,7 +1574,7 @@ paths:
           required: true
   /dashboard/connections:
     get:
-      summary: Your GET endpoint
+      summary: Dashboard - Conexões
       tags: []
       responses:
         '200':
