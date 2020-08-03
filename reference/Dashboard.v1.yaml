@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Dashboard
+  title: API Hotel Dashboard
   version: '1.0'
   license:
     name: MIT
@@ -394,6 +394,20 @@ paths:
       responses:
         '200':
           description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    external_id:
+                      type: integer
+                    use_api:
+                      type: boolean
       operationId: get-atlantica-hotels
       parameters:
         - schema:
@@ -426,9 +440,12 @@ paths:
                   type: string
                 external_id:
                   type: integer
+                use_api:
+                  type: boolean
               required:
                 - name
                 - external_id
+                - use_api
   '/atlantica/hotels/{id}':
     parameters:
       - schema:
@@ -442,6 +459,17 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  external_id:
+                    type: integer
+                  use_api:
+                    type: boolean
       operationId: get-atlantica-hotels-id
       parameters:
         - schema:
@@ -473,6 +501,8 @@ paths:
                   type: string
                 external_id:
                   type: integer
+                use_api:
+                  type: boolean
     delete:
       summary: Deletar atlantica hotel
       operationId: delete-atlantica-hotels-id
@@ -1740,3 +1770,4 @@ paths:
           required: true
 components:
   schemas: {}
+  securitySchemes: {}
