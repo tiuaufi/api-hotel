@@ -1,0 +1,2054 @@
+openapi: 3.0.0
+info:
+  title: API Hotel Dashboard
+  contact:
+    name: Uau-Fi
+    url: mailto:ti@uaufi.com
+    email: ti@uaufi.com
+  license:
+    name: MIT
+  version: "1.0"
+servers:
+- url: https://managerstagin.uaufi.com
+  description: Sandbox
+paths:
+  /sessions:
+    post:
+      summary: Autenticar conta
+      operationId: post-sessions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+  /locked/rooms:
+    get:
+      tags: []
+      summary: Todos quartos bloqueados
+      operationId: get-locked-rooms
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_1'
+    post:
+      summary: Criar quarto bloqueado
+      operationId: post-locked-rooms
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_1'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_2'
+  /locked/rooms/{id}:
+    get:
+      tags: []
+      summary: Ver quarto bloqueado
+      operationId: get-locked-rooms-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_1'
+    put:
+      summary: Atualizar quarto bloqueado
+      operationId: put-locked-rooms-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_2'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_3'
+    delete:
+      summary: Deletar quarto bloqueado
+      operationId: delete-locked-rooms-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /hotels:
+    get:
+      tags: []
+      summary: Todos hotéis
+      operationId: get-hotels
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_4'
+    post:
+      summary: Criar hotel
+      operationId: post-hotels
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_3'
+      responses:
+        "200":
+          description: OK
+  /hotels/{id}:
+    get:
+      tags: []
+      summary: Ver hotel
+      operationId: get-hotels-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_5'
+    put:
+      summary: Atualizar hotel
+      operationId: put-hotels-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_4'
+      responses:
+        "200":
+          description: OK
+    delete:
+      summary: Deletar hotel
+      operationId: delete-hotels-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authetication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+    patch:
+      summary: Trocar imagem do hotel
+      operationId: patch-hotels-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_5'
+      responses:
+        "200":
+          description: OK
+  /atlantica/hotels:
+    get:
+      tags: []
+      summary: Todos atlantica hoteis
+      operationId: get-atlantica-hotels
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+    post:
+      summary: Criar atlantica hotel
+      operationId: post-atlantica-hotels
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_6'
+      responses:
+        "200":
+          description: OK
+  /atlantica/hotels/{id}:
+    get:
+      tags: []
+      summary: Ver atlantica hotel
+      operationId: get-atlantica-hotels-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+    put:
+      summary: Atualizar atlantica hotel
+      operationId: put-atlantica-hotels-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_7'
+      responses:
+        "200":
+          description: OK
+    delete:
+      summary: Deletar atlantica hotel
+      operationId: delete-atlantica-hotels-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /users:
+    get:
+      tags: []
+      summary: Todos usuarios
+      operationId: get-users
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_6'
+    post:
+      summary: Criar usuário
+      operationId: post-users
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_8'
+      responses:
+        "200":
+          description: OK
+  /users/{id}:
+    get:
+      tags: []
+      summary: Ver usuário
+      operationId: get-users-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_7'
+    put:
+      summary: Atualizar usuario
+      operationId: put-users-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_9'
+      responses:
+        "200":
+          description: OK
+    delete:
+      summary: Deletar usuario
+      operationId: delete-users-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /hotspots:
+    get:
+      tags: []
+      summary: Todos hotspots
+      operationId: get-hotspots
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_8'
+    post:
+      summary: Criar hotspot
+      operationId: post-hotspots
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_10'
+      responses:
+        "200":
+          description: OK
+  /hotspots/{id}:
+    get:
+      tags: []
+      summary: Ver hotspot
+      operationId: get-hotspots-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_9'
+    put:
+      summary: Atualizar hotspot
+      operationId: put-hotspots-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_11'
+      responses:
+        "200":
+          description: OK
+    delete:
+      summary: Deletar hotspot
+      operationId: delete-hotspots-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /hotspots/{hotspot_id}/file/type/{hotspot_file_type_id}:
+    patch:
+      summary: Trocar imagem do hotspot
+      description: |-
+        hotspot_file_type_id: 1 (imagem colorido)
+        hotspot_file_type_id: 2 (imagem branca)
+        hotspot_file_type_id > 2 (não existe)
+      operationId: patch-hotspots-hotspot_id-file-type-hotspot_file_type_id
+      parameters:
+      - name: hotspot_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: hotspot_file_type_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_12'
+      responses:
+        "200":
+          description: OK
+  /events:
+    get:
+      tags: []
+      summary: Todos eventos
+      operationId: get-events
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_10'
+    post:
+      summary: Criar evento
+      operationId: post-events
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_13'
+      responses:
+        "200":
+          description: OK
+  /events/{id}:
+    get:
+      tags: []
+      summary: Ver evento
+      operationId: get-events-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_11'
+    put:
+      summary: Atualizar evento
+      operationId: put-events-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_14'
+      responses:
+        "200":
+          description: OK
+  /groups:
+    get:
+      tags: []
+      summary: Todos grupos
+      operationId: get-groups
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_12'
+  /connected/clients:
+    get:
+      tags: []
+      summary: Todos clientes conectados
+      operationId: get-connected-clients
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_13'
+  /connected/clients/{id}:
+    delete:
+      summary: Desconectar cliente
+      operationId: delete-connected-clients-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /events/plans:
+    get:
+      tags: []
+      summary: Todos planos de evento
+      operationId: get-events-plans
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+  /plans:
+    get:
+      tags: []
+      summary: Todos os planos
+      operationId: get-plans
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_14'
+    post:
+      summary: Criar plano
+      operationId: post-plans
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_15'
+      responses:
+        "200":
+          description: OK
+  /plans/{id}:
+    get:
+      tags: []
+      summary: Ver plano
+      operationId: get-plans-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_15'
+    put:
+      summary: Atualizar plano
+      operationId: put-plans-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_16'
+      responses:
+        "200":
+          description: OK
+    delete:
+      summary: Deletar plano
+      operationId: delete-plans-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /plans/types:
+    get:
+      tags: []
+      summary: Todos tipos de plano
+      operationId: get-plans-types
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_16'
+  /manage/devices:
+    get:
+      tags: []
+      summary: Todos MACs
+      operationId: get-manage-devices
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_17'
+    post:
+      summary: Criar MAC
+      operationId: post-manage-devices
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_17'
+      responses:
+        "201":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+    patch:
+      summary: Criar diversos MACs
+      operationId: patch-manage-devices
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_18'
+      responses:
+        "200":
+          description: OK
+  /manage/devices/{id}:
+    delete:
+      summary: Deletar MACs
+      operationId: delete-manage-devices-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /users/impersonate:
+    get:
+      tags: []
+      summary: Todos usuários para impersonar
+      operationId: get-users-impersonate
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_18'
+  /users/{id}/impersonate:
+    get:
+      tags: []
+      summary: Impersonar usuário
+      operationId: get-users-id-impersonate
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_19'
+    delete:
+      summary: Desimpersonar usuário
+      operationId: delete-users-id-impersonate
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_20'
+  /dashboard/infos:
+    get:
+      tags: []
+      summary: Dashboard - Cards
+      operationId: get-dashboard-infos
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_21'
+  /dashboard/charts:
+    get:
+      tags: []
+      summary: Dashboard - Charts
+      operationId: get-dashboard-charts
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_22'
+  /dashboard/connections:
+    get:
+      tags: []
+      summary: Dashboard - Conexões
+      operationId: get-dashboard-connections
+      parameters:
+      - name: Authentication
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_23'
+  /guest/brazilian/{document}/{spot}:
+    get:
+      tags: []
+      summary: Validar hóspede brasileiro
+      operationId: get-guest-brazilian-:document-:spot
+      parameters:
+      - name: document
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: spot
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: É hospede
+        "401":
+          description: Não é hóspede
+  /guest/foreign/{lastName}/{room}/{spot}:
+    get:
+      tags: []
+      summary: Validar hóspede estrangeiro
+      operationId: get-guest-foreign-:lastName-:room-:spot
+      parameters:
+      - name: lastName
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: room
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: spot
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: É hospede
+        "401":
+          description: Não é hospede
+  /devices/{mac}/client:
+    get:
+      tags: []
+      summary: Ver toda informação do MAC
+      operationId: get-devices-mac-client
+      parameters:
+      - name: mac
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer token
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_24'
+        "404":
+          description: Not Found
+components:
+  schemas:
+    body:
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    inline_response_200:
+      required:
+      - color
+      - group
+      - image
+      - menu
+      - name
+      - token
+      type: object
+      properties:
+        name:
+          type: string
+        color:
+          type: string
+        image:
+          type: string
+        group:
+          type: string
+        token:
+          type: string
+        menu:
+          type: array
+          items:
+            $ref: '#/components/schemas/inline_response_200_menu'
+    inline_response_200_1:
+      required:
+      - created_at
+      - hotel_id
+      - id
+      - room
+      type: object
+      properties:
+        id:
+          type: integer
+        room:
+          type: string
+        created_at:
+          type: string
+        hotel_id:
+          type: integer
+    body_1:
+      required:
+      - room
+      type: object
+      properties:
+        room:
+          type: string
+    inline_response_200_2:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: integer
+    body_2:
+      required:
+      - room
+      type: object
+      properties:
+        room:
+          type: string
+    inline_response_200_3:
+      required:
+      - created_at
+      - room
+      type: object
+      properties:
+        room:
+          type: string
+        created_at:
+          type: string
+    inline_response_200_4:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
+        atlantica_hotel_id:
+          type: integer
+    body_3:
+      required:
+      - color
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+        color:
+          type: string
+        atlantica_hotel_id:
+          type: integer
+    inline_response_200_5:
+      required:
+      - color
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
+        atlantica_hotel_id:
+          type: integer
+        image:
+          type: string
+    body_4:
+      type: object
+      properties:
+        name:
+          type: string
+        color:
+          type: string
+        atlantica_hotel_id:
+          type: integer
+    body_5:
+      required:
+      - file
+      type: object
+      properties:
+        file:
+          type: object
+    body_6:
+      required:
+      - external_id
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+        external_id:
+          type: integer
+    body_7:
+      type: object
+      properties:
+        name:
+          type: string
+        external_id:
+          type: integer
+    inline_response_200_6:
+      required:
+      - email
+      - group
+      - hotel
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        hotel:
+          type: string
+        group:
+          type: string
+    body_8:
+      required:
+      - email
+      - group_id
+      - hotel_id
+      - name
+      - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        group_id:
+          type: integer
+        hotel_id:
+          type: integer
+        password:
+          type: string
+    inline_response_200_7:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        hotel_id:
+          type: integer
+        group_id:
+          type: integer
+    body_9:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        group_id:
+          type: integer
+        hotel_id:
+          type: integer
+        password:
+          type: string
+    inline_response_200_8:
+      required:
+      - ask_phone
+      - bg_color
+      - detail_color
+      - external_id
+      - redirect_url
+      type: object
+      properties:
+        bg_color:
+          type: string
+        detail_color:
+          type: string
+        ask_phone:
+          type: string
+        redirect_url:
+          type: string
+        external_id:
+          type: integer
+        hotel_id:
+          type: integer
+    body_10:
+      type: object
+      properties:
+        bg_color:
+          type: string
+        detail_color:
+          type: string
+        external_id:
+          type: integer
+        redirect_url:
+          type: string
+        ask_phone:
+          type: boolean
+        hotel_id:
+          type: integer
+    inline_response_200_9:
+      required:
+      - ask_phone
+      - bg_color
+      - detail_color
+      - external_id
+      - redirect_url
+      type: object
+      properties:
+        external_id:
+          type: integer
+        bg_color:
+          type: string
+        detail_color:
+          type: string
+        redirect_url:
+          type: string
+        color_logo:
+          type: string
+        ask_phone:
+          type: boolean
+        hotel_id:
+          type: integer
+    body_11:
+      type: object
+      properties:
+        bg_color:
+          type: string
+        detail_color:
+          type: string
+        ask_phone:
+          type: boolean
+        redirect_url:
+          type: string
+        external_id:
+          type: integer
+        hotel_id:
+          type: integer
+    body_12:
+      type: object
+      properties:
+        file:
+          type: object
+    inline_response_200_10:
+      type: object
+      properties:
+        name:
+          type: string
+        voucher:
+          type: string
+        active:
+          type: string
+        starts_at:
+          type: string
+        end_at:
+          type: string
+    body_13:
+      required:
+      - end_date
+      - end_time
+      - name
+      - start_date
+      - start_time
+      type: object
+      properties:
+        name:
+          type: string
+          description: DATE
+        start_date:
+          type: string
+          description: |
+            HH:MM:SS
+        start_time:
+          type: string
+          description: DATE
+        end_date:
+          type: string
+          description: HH:MM:SS
+        end_time:
+          type: string
+        active:
+          type: boolean
+        plan_id:
+          type: integer
+    inline_response_200_11:
+      type: object
+      properties:
+        name:
+          type: string
+        voucher:
+          type: string
+        start_date:
+          type: string
+        start_time:
+          type: string
+        end_date:
+          type: string
+        end_time:
+          type: string
+        active:
+          type: boolean
+    body_14:
+      type: object
+      properties:
+        name:
+          type: string
+        start_date:
+          type: string
+        start_time:
+          type: string
+        end_date:
+          type: string
+        end_time:
+          type: string
+        plan_id:
+          type: integer
+        active:
+          type: boolean
+    inline_response_200_12:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: integer
+        key:
+          type: integer
+    inline_response_200_13:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        foreign:
+          type: boolean
+        mac:
+          type: string
+        plan:
+          type: string
+        online_until:
+          type: string
+        hotel:
+          type: string
+        online:
+          type: boolean
+    inline_response_200_14:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        id:
+          type: integer
+        hotspot:
+          type: integer
+        hotel:
+          type: string
+    body_15:
+      required:
+      - active
+      - duration
+      - hotspot_id
+      - name
+      - plan_type_id
+      - speed_download
+      - speed_upload
+      - unit_time
+      type: object
+      properties:
+        name:
+          type: string
+        hotspot_id:
+          type: integer
+        speed_download:
+          type: integer
+        speed_upload:
+          type: integer
+        duration:
+          type: integer
+        unit_time:
+          type: string
+        plan_type_id:
+          type: integer
+        active:
+          type: boolean
+    inline_response_200_15:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        hotspot_id:
+          type: integer
+        speed_download:
+          type: integer
+        speed_upload:
+          type: integer
+        duration:
+          type: integer
+        unit_time:
+          type: string
+        plan_type_id:
+          type: integer
+        active:
+          type: boolean
+    body_16:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        speed_download:
+          type: integer
+        speed_upload:
+          type: integer
+        duration:
+          type: integer
+        unit_time:
+          type: string
+        plan_type_id:
+          type: integer
+        active:
+          type: boolean
+        hotspot_id:
+          type: integer
+    inline_response_200_16:
+      required:
+      - id
+      - key
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        key:
+          type: string
+    inline_response_200_17:
+      required:
+      - comment
+      - hotel
+      - hotspot
+      - id
+      - mac
+      - name
+      - phone
+      type: object
+      properties:
+        id:
+          type: integer
+        mac:
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+        comment:
+          type: string
+        hotspot:
+          type: integer
+        hotel:
+          type: string
+    body_17:
+      required:
+      - active
+      - comment
+      - hotspot_id
+      - mac
+      - name
+      - phone
+      type: object
+      properties:
+        name:
+          type: string
+        phone:
+          type: string
+        comment:
+          type: string
+        mac:
+          type: string
+        hotspot_id:
+          type: integer
+        active:
+          type: boolean
+    body_18:
+      type: object
+      properties:
+        macs:
+          type: string
+        hotspot_id:
+          type: integer
+    inline_response_200_18:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    inline_response_200_19:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        token:
+          type: string
+    inline_response_200_20:
+      required:
+      - color
+      - id
+      - image
+      - menu
+      - token
+      - type
+      type: object
+      properties:
+        id:
+          type: integer
+        color:
+          type: string
+        menu:
+          type: array
+          items:
+            $ref: '#/components/schemas/inline_response_200_20_menu'
+        token:
+          type: string
+        type:
+          type: integer
+        image:
+          type: string
+    inline_response_200_21:
+      type: object
+      properties:
+        registers:
+          $ref: '#/components/schemas/inline_response_200_21_registers'
+        hotels:
+          type: integer
+        onlines:
+          type: integer
+    inline_response_200_22:
+      type: object
+      properties:
+        days:
+          type: string
+        months:
+          type: string
+        years:
+          type: string
+    inline_response_200_23:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        foreign:
+          type: boolean
+        mac:
+          type: string
+        plan:
+          type: string
+        online_until:
+          type: string
+    inline_response_200_24:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/inline_response_200_24_client'
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/inline_response_200_24_connections'
+    inline_response_200_items:
+      type: object
+      properties:
+        title:
+          type: string
+        redirect:
+          type: string
+        action:
+          type: string
+    inline_response_200_menu:
+      required:
+      - action
+      - items
+      - redirect
+      - title
+      type: object
+      properties:
+        title:
+          type: string
+        redirect:
+          type: string
+        action:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/inline_response_200_items'
+    inline_response_200_20_menu:
+      type: object
+      properties:
+        title:
+          type: string
+        redirect:
+          type: string
+        action:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/inline_response_200_items'
+    inline_response_200_21_registers:
+      type: object
+      properties:
+        total:
+          type: integer
+        today:
+          type: integer
+    inline_response_200_24_client:
+      type: object
+      properties:
+        id: {}
+        name:
+          type: string
+        email:
+          type: string
+        document:
+          type: string
+        area_code_id:
+          type: integer
+        phone:
+          type: string
+        last_room:
+          type: string
+        foreign:
+          type: boolean
+        hotel_id:
+          type: integer
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        photo:
+          type: string
+        hotel:
+          type: string
+        info:
+          type: string
+        device_id:
+          type: integer
+    inline_response_200_24_connections:
+      type: object
+      properties:
+        online_until:
+          type: string
+        hotel:
+          type: string
+        plan:
+          type: string
