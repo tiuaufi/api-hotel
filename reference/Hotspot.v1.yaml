@@ -11,7 +11,7 @@ info:
   description: ''
 servers:
   - description: Sandbox
-    url: 'https://maxhotspot.uaufi.com'
+    url: 'https://managerstagin.uaufi.com'
 paths:
   '/clients/{mac}/hotspot/{spot}/ip/{ip}':
     get:

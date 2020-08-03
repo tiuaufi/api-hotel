@@ -5,10 +5,11 @@ info:
   license:
     name: MIT
   contact:
-    name: Uau-Fi TI
+    name: Uau-Fi
     email: ti@uaufi.com
+    url: 'mailto:ti@uaufi.com'
 servers:
-  - url: 'https://maxhotspot.uaufi.com'
+  - url: 'https://managerstagin.uaufi.com'
     description: Sandbox
 paths:
   /sessions:
@@ -911,8 +912,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  id:
-                    type: integer
                   name:
                     type: string
                   voucher:
@@ -1322,6 +1321,7 @@ paths:
             application/json:
               schema:
                 type: object
+          description: OK
       requestBody:
         content:
           application/json:
