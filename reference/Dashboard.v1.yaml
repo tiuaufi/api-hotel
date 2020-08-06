@@ -1768,6 +1768,137 @@ paths:
           name: Authorization
           description: Bearer token
           required: true
+  /tutorials:
+    get:
+      summary: Todos tutoriais
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    vimeo_url:
+                      type: string
+                    id:
+                      type: integer
+                    created_at:
+                      type: string
+                  required:
+                    - name
+                    - vimeo_url
+                    - id
+                    - created_at
+      operationId: get-tutorials
+      description: ''
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    post:
+      summary: ''
+      operationId: post-tutorials
+      responses:
+        '201':
+          description: Created
+      description: ''
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                vimeo_url:
+                  type: string
+  '/tutorials/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Ver tutorial
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  vimeo_url:
+                    type: string
+      operationId: get-tutorials-id
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    put:
+      summary: Atualizar tutorial
+      operationId: put-tutorials-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                vimeo_url:
+                  type: string
+              required:
+                - name
+                - vimeo_url
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    delete:
+      summary: Deletar tutorial
+      operationId: delete-tutorials-id
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
 components:
   schemas: {}
   securitySchemes: {}
