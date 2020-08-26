@@ -1975,6 +1975,164 @@ paths:
           name: Authentication
           description: Bearer token
           required: true
+  /advertisements:
+    get:
+      summary: Todos publicidades
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  views:
+                    type: integer
+                  hotel:
+                    type: string
+                  active:
+                    type: boolean
+                  starts_at:
+                    type: string
+                  end_at:
+                    type: string
+      operationId: get-advertisements
+      description: ''
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+    post:
+      summary: Criar publicidade
+      operationId: post-advertisements
+      responses:
+        '201':
+          description: Created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                hotel_id:
+                  type: integer
+                duration:
+                  type: integer
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                active:
+                  type: boolean
+                url:
+                  type: string
+                advertisement_type:
+                  type: string
+                files:
+                  type: array
+                  items:
+                    type: object
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+  '/advertisements/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Ver publicidade
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  start_date:
+                    type: string
+                  end_date:
+                    type: string
+                  duration:
+                    type: integer
+                  views:
+                    type: string
+                  active:
+                    type: boolean
+                  hotel_id:
+                    type: integer
+      operationId: get-advertisements-id
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: 'Bearer token    '
+          required: true
+    put:
+      summary: Atualizar publicidade
+      operationId: put-advertisements-id
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authentication
+          description: Bearer token
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                hotel_id:
+                  type: integer
+                duration:
+                  type: string
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                active:
+                  type: string
+                files:
+                  type: array
+                  items:
+                    type: object
+        description: ''
+    delete:
+      summary: Deletar publicidade
+      operationId: delete-advertisements-id
+      responses:
+        '200':
+          description: OK
 components:
   schemas: {}
   securitySchemes: {}
