@@ -1650,7 +1650,7 @@ paths:
         - schema:
             type: string
           in: header
-          name: Authorization
+          name: Authentication
           description: Bearer token
           required: true
     parameters:
@@ -1678,7 +1678,7 @@ paths:
         - schema:
             type: string
           in: header
-          name: Authorization
+          name: Authentication
           description: Bearer token
           required: true
     parameters:
@@ -1765,7 +1765,7 @@ paths:
         - schema:
             type: string
           in: header
-          name: Authorization
+          name: Authentication
           description: Bearer token
           required: true
   /tutorials:
@@ -1929,24 +1929,30 @@ paths:
           name: Authentication
           description: Bearer token
           required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                start_date:
-                  type: string
-                start_time:
-                  type: string
-                end_date:
-                  type: string
-                end_time:
-                  type: string
-                room:
-                  type: string
-                hotel_id:
-                  type: integer
+        - schema:
+            type: string
+          in: query
+          name: start_date
+        - schema:
+            type: string
+          in: query
+          name: start_time
+        - schema:
+            type: string
+          in: query
+          name: end_date
+        - schema:
+            type: string
+          in: query
+          name: end_time
+        - schema:
+            type: string
+          in: query
+          name: room
+        - schema:
+            type: number
+          in: query
+          name: hotel_id
   /reports/marco/civil:
     post:
       summary: Notificar solicitação marco civil
